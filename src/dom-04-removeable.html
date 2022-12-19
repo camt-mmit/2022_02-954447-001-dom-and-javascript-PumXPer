@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module" src="./js/dom-04-removeable.js"></script>
+  </head>
+  <body>
+    <template id="tmp-input">
+      <div class="cmp-input-container">
+        <label for="">
+          <b class="cmp-input-title">Number <span></span></b>
+          <input type="number" name="" id="" value="0" required />
+        </label>
+        <button type="button" class="cmd-input-remove">X</button>
+      </div>
+    </template>
+
+    <section>
+      <button type="button" class="cmd-add-input">Add Input</button>
+      <div class="cmp-inputs-container"></div>
+      <div>
+        <label>
+          <b>Result:</b>
+          <output class="cmp-result">0</output>
+        </label>
+      </div>
+    </section>
+  </body>
+</html>
