@@ -1,4 +1,4 @@
-function add(inputsContainer, resultComponent) {
+function add(inputsContainer) {
   const inputContainer = document.createElement('div');
   inputContainer.classList.add('cmp-input-container');
 
@@ -14,19 +14,8 @@ function add(inputsContainer, resultComponent) {
   label.append(title);
   label.append(input);
 
+  console.debug(inputsContainer);
   inputsContainer.append(inputContainer);
-
-  const nextN = inputsContainer.querySelectorAll('input[type="number"]').length;
-  title.innerText = `Number ${nextN}`;
-
-  input.addEventListener('change', () => {
-    const inputs = [
-      ...inputsContainer.querySelectorAll('input[type="number"]'),
-    ];
-    const total = inputs.reduce((carry, em) => carry + em.valueAsNumber, 0);
-
-    resultComponent.value = total;
-  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultComponent = document.querySelector('.cmp-result');
 
   document.querySelector('.cmd-add-input').addEventListener('click', () => {
-    add(inputsContainer, resultComponent);
+    add(inputsContainer);
   });
 
-  add(inputsContainer, resultComponent);
+  add(inputsContainer);
 });
