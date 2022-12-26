@@ -7,23 +7,23 @@ function computeTotal(inputsContainer, resultComponent) {
 }
 
 function rebuildIndex(inputsContainer) {
-  const inputContainer = [
+  const inputContainers = [
     ...inputsContainer.querySelectorAll('.cmp-input-container'),
   ];
 
-  inputContainer.forEach((elem, i) => {
+  inputContainers.forEach((elem, i) => {
     [...elem.querySelectorAll('.cmp-input-no')].forEach((elem) => {
       elem.innerText = i + 1;
     });
   });
 
   [...inputsContainer.querySelectorAll('.cmd-remove-input')].forEach((elem) => {
-    elem.disabled = !(inputContainer.length > 1);
+    elem.disabled = !(inputContainers.length > 1);
   });
 }
 
-function add(inputsContainer, resultComponent, inputTemplate) {
-  const fragment = inputTemplate.content.cloneNode(true);
+function add(inputsContainer, resultComponent, template) {
+  const fragment = template.content.cloneNode(true);
 
   inputsContainer.append(fragment);
 
@@ -38,7 +38,7 @@ function remove(inputsContainer, resultComponent, inputContainer) {
   computeTotal(inputsContainer, resultComponent);
 }
 
-function assign(inputSection, inputTemplate) {
+export function assign(inputSection, inputTemplate) {
   const inputsContainer = inputSection.querySelector('.cmp-inputs-container');
   const resultComponent = inputSection.querySelector('.cmp-result');
 
@@ -63,10 +63,3 @@ function assign(inputSection, inputTemplate) {
 
   add(inputsContainer, resultComponent, inputTemplate);
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  const inputTemplate = document.querySelector('template#tmp-input');
-  const inputSection = document.querySelector('.cmp-input-section');
-
-  assign(inputSection, inputTemplate);
-});

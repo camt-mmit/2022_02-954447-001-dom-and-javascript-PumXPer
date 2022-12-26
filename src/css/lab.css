@@ -1,0 +1,11 @@
+* {
+  margin: auto;
+}
+
+.cmp-add-section {
+  margin: 10px;
+}
+
+.cmp-input-section {
+  border-top: 1px solid black;
+}

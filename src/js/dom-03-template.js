@@ -1,25 +1,25 @@
-function calculateTotal(container, resultComponent) {
-  const inputs = [...container.querySelectorAll('input[type="number"]')];
+function calculateTotal(inputsContainer, resultComponent) {
+  const inputs = [...inputsContainer.querySelectorAll('input[type="number"]')];
   const total = inputs.reduce((carry, em) => carry + em.valueAsNumber, 0);
 
   resultComponent.value = total;
 }
 
-function add(container, resultComponent, template) {
+function add(inputsContainer, resultComponent, template) {
   const fragment = template.content.cloneNode(true);
 
   const title = fragment.querySelector('.cmp-input-title');
   const input = fragment.querySelector('input[type="number"]');
 
-  container.append(fragment);
+  inputsContainer.append(fragment);
 
-  const nextN = container.querySelectorAll('input[type="number"]').length;
+  const nextN = inputsContainer.querySelectorAll('input[type="number"]').length;
   title.innerText = `Number ${nextN}`;
 
-  calculateTotal(container, resultComponent);
+  calculateTotal(inputsContainer, resultComponent);
 
   input.addEventListener('change', () => {
-    calculateTotal(container, resultComponent);
+    calculateTotal(inputsContainer, resultComponent);
   });
 }
 
